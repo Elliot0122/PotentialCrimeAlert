@@ -17,7 +17,7 @@
 
 <script>
 import VueWordCloud from 'vuewordcloud';
-import wordcloudJson from '../../../Backend/wordcloud.json'
+import wordcloudJson from '../../../backend/wordcloud.json'
 
 export default {
   components: {

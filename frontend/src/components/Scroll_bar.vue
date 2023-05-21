@@ -70,7 +70,7 @@
 
 <script>
 import { useVirtualList } from '@vueuse/core'
-import EventJson from '../../../Backend/temp.json'
+import EventJson from '../../../backend/temp.json'
 export default {
   setup() {
     var allItems = []

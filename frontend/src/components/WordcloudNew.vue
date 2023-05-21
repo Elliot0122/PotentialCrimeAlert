@@ -7,7 +7,7 @@
   import * as cloud from 'd3-cloud'
   import * as d3ScaleChromatic from 'd3-scale-chromatic'
   import resize from 'vue-resize-directive'
-  import jsonData from '../../../Backend/wordcloud.json'
+  import jsonData from '../../../backend/wordcloud.json'
   
   
   export default {

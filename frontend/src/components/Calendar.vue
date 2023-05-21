@@ -25,7 +25,7 @@
 
 <script >
 
-import eventJson from "../.././../Backend/data.json"
+import eventJson from "../../../backend/data.json"
 
 export default{
     data(){
