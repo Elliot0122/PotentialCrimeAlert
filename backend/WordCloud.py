@@ -6,7 +6,7 @@ column_names = [
     "Frequency"
 ]
 def count_categories():
-    json_file = './event.json'
+    json_file = './data/event.json'
     with open(json_file) as file:
         data = json.load(file)
 
@@ -23,7 +23,7 @@ def count_categories():
                         else:
                             category_counts[category] = 1
 
-    print(category_counts)
+    # print(category_counts)
     category_result = []
 
     for i, count in category_counts.items():
@@ -36,7 +36,7 @@ def count_categories():
                 category_result.append(temp)
 
 
-    with open('wordcloud.json', 'w') as file:
+    with open('data/wordcloud.json', 'w') as file:
         json.dump(category_result, file)
 
 if __name__ == "__main__":
