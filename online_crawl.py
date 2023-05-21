@@ -41,7 +41,7 @@ def create_data_to_json():
         date = div.find('div', class_ = '-mt-1 shadow-md')
         info = div.find('div', class_='w-full h-28')
         url = div.find('a')
-        category = div.find('div', class_='flex-none inline-flex py-1 px-2 rounded-2xl text-xs font-semibold border border-theme subtle-shadow items-center bg-white text-theme-alt')
+        category = div.find_all('span', class_='inline-block mr-1')
 
         if date:
             date = date.find_all('span')
@@ -68,14 +68,29 @@ def create_data_to_json():
                     events[year][new_month][new_date][title]["price"] = "unavailable or free"
                 if url:
                     events[year][new_month][new_date][title]["url"] = url.get('href')
-                    print(url.get('href'))
                 if category:
-                    events[year][new_month][new_date][title]["url"] = category.text
+                    events[year][new_month][new_date][title]["category"] = []
+                    for i in category:
+                        events[year][new_month][new_date][title]["category"].append(i.text)
     with open('./data/event.json', 'w') as fp:
         json.dump(events, fp)
 
-
+def retrun_event(date):
+    create_data_to_json()
+    year, month, day = date.split('/')
+    with open('./data/event.json', 'r') as fp:
+        data = json.load(fp)
+        if data[year][month][day]:
+            event_name = []
+            for key in data[year][month][day]:
+                event_name.append(key)
+            return event_name, data[year][month][day]
+        else:
+            return {}
 
 if __name__ == '__main__':
     create_data_to_json()
-    # retrun_event()
+    try:
+        print(retrun_event("2023/6/2"))
+    except:
+        print("No event")
