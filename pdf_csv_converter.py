@@ -99,8 +99,24 @@ def Preprocess():
     df = df.reindex(columns=last_column_names)
     df.to_csv('crime_data_preprocess.csv', index=False, header=True)
     print(df)
+
+def GetCrime(input):
+    df = pd.read_csv('crime_data_preprocess.csv')
+    df_return = pd.DataFrame(columns=last_column_names)
+    for index, row in df.iterrows():
+        datereported = row['DateReported']
+        if datereported == input:
+            df_return = df_return._append(row, ignore_index=True)
+    # Convert DataFrame to JSON
+    json_data = df_return.to_json(orient='records')
+    
+    # Save JSON data to a file
+    with open('CrimeDate.json', 'w') as file:
+        file.write(json_data)       
+
+
 if __name__ == "__main__":
-    AddGeoColumn()
+   ''' AddGeoColumn()
     Preprocess()
     # Read the CSV file into a DataFrame
     df = pd.read_csv('crime_data_preprocess.csv')
@@ -110,4 +126,6 @@ if __name__ == "__main__":
     
     # Save JSON data to a file
     with open('output.json', 'w') as file:
-        file.write(json_data)
+        file.write(json_data)'''
+   GetCrime('4/25/2023')
+    

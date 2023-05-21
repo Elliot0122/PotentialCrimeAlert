@@ -11,8 +11,8 @@ if __name__ == "__main__":
     gmaps = googlemaps.Client(key='AIzaSyDImDc1pPOI2VTYG8Pb0xPedM8TuYHvI8A')
     
     # Geocoding an address
-    addresses = ['1440 Wake Forest Drive, Davis, CA','250 W Quad, Davis, CA ']
-    geocode_result = gmaps.geocode('1600 Amphitheatre Parkway, Mountain View, CA')
+    addresses = ['1440 Wake Forest Drive, Davis, CA','250 W Quad, Davis, CA ','5th St & B St, Davis, CA']
+    geocode_result = gmaps.geocode('1440 Wake Forest Drive, Davis, CA')
     geocode_result_dict = {k: v for d in geocode_result for k, v in d.items()}
     print(geocode_result_dict['geometry']['location'])
     '''
