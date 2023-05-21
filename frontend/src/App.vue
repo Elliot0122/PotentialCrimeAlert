@@ -1,5 +1,6 @@
 <script>
 import Map from './components/Map.vue'
+import Calendar from './components/Calendar.vue'
 import Wordcloud from './components/Wordcloud.vue'
 import Scroll_bar from './components/Scroll_bar.vue'
 
@@ -8,6 +9,7 @@ export default {
 
   components: {
     Map,
+    Calendar,
     Wordcloud,
     Scroll_bar
   },
@@ -25,8 +27,8 @@ export default {
         style="justify-content: center; align-items: center; display:grid; margin: 15px 5px 7.5px 15px; padding: 10px 10px 5px 10px">
         <Map />
       </v-col>
-      <v-col no-gutters id="toolbox" style="height: 20vh; justify-content: center; align-items: center; display:grid; margin: 15px 15px 7.5px 5px; padding: 10px 10px 5px 10px">
-        <toolbox />
+      <v-col no-gutters id="toolbox" style="height: 63vh; align-items: top; display:grid; margin: 15px 15px 7.5px 5px; padding: 30px 10px 5px 10px">
+        <Calendar />
       </v-col>
     </v-row>
     <v-row no-gutters id="lowerRow" style="height: 35vh; width: 100%;">
