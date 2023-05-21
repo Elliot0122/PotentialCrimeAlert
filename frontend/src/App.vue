@@ -1,13 +1,21 @@
 <script>
 import Map from './components/Map.vue'
+<<<<<<< HEAD
 import Wordcloud from './components/Wordcloud.vue'
+=======
+import Scroll_bar from './components/Scroll_bar.vue'
+>>>>>>> origin/scroll
 
 export default {
   name: 'App',
 
   components: {
     Map,
+<<<<<<< HEAD
     Wordcloud
+=======
+    Scroll_bar
+>>>>>>> origin/scroll
   },
 
   data: () => ({
@@ -32,8 +40,8 @@ export default {
         id="stockRecommendation">
         <Wordcloud/>
       </v-col>
-      <v-col no-gutters id="wordcloud" style="height: 10vh; justify-content: center; align-items: center; margin: 10px 15px 15px 7.5px;">
-        456
+      <v-col no-gutters id="wordcloud" style="height: 32vh; justify-content: center; align-items: center; margin: 10px 15px 15px 7.5px;">
+        <Scroll_bar />
       </v-col>
     </v-row>
   </div>
