@@ -1,11 +1,13 @@
 <script>
 import Map from './components/Map.vue'
+import Wordcloud from './components/Wordcloud.vue'
 
 export default {
   name: 'App',
 
   components: {
     Map,
+    Wordcloud
   },
 
   data: () => ({
@@ -13,7 +15,6 @@ export default {
   }),
 }
 </script>
-
 
 <template>
   <div id="container">
@@ -29,7 +30,7 @@ export default {
     <v-row no-gutters id="lowerRow" style="height: 35vh; width: 100%;">
       <v-col no-gutters style="display:grid; margin: 10px 7.5px 15px 15px;"
         id="stockRecommendation">
-        123
+        <Wordcloud/>
       </v-col>
       <v-col no-gutters id="wordcloud" style="height: 10vh; justify-content: center; align-items: center; margin: 10px 15px 15px 7.5px;">
         456
@@ -37,7 +38,6 @@ export default {
     </v-row>
   </div>
 </template>
-
 
 <style>
 html,
