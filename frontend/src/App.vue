@@ -46,8 +46,8 @@ body {
   height: 100%;
   min-width: 1300px;
   margin: 0;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  overflow-y: visible;
+  overflow-x: visible;
   font: 15px -apple-system, BlinkMacSystemFont,
     Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
     Fira Sans, Droid Sans, Helvetica Neue, sans-serif;

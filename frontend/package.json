@@ -10,9 +10,13 @@
   "dependencies": {
     "@mdi/font": "5.9.55",
     "core-js": "^3.8.3",
+    "d3": "^7.8.4",
+    "d3-cloud": "^1.2.5",
+    "d3-scale-chromatic": "^3.0.0",
     "roboto-fontface": "*",
     "vue": "^3.2.13",
     "vue-google-maps-community-fork": "^0.3.1",
+    "vue-resize-directive": "^1.2.0",
     "vue3-word-cloud": "^1.0.4",
     "vuetify": "^3.0.0-beta.0",
     "vuewordcloud": "^19.0.0",
@@ -42,7 +46,8 @@
       "parser": "@babel/eslint-parser"
     },
     "rules": {
-      "vue/multi-word-component-names": "off"
+      "vue/multi-word-component-names": "off",
+      "no-unused-vars": "off"
     }
   },
   "browserslist": [

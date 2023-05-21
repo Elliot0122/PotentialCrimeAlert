@@ -8,7 +8,18 @@
     <GMapCluster :zoomOnClick="true">
       <GMapMarker
         :key="index"
-        v-for="(m, index) in markers"
+        v-for="(m, index) in crimeMarkers"
+        :position="m.position"
+        :clickable="true"
+        :draggable="true"
+        @click="center = m.position"
+      />
+    </GMapCluster>
+    <GMapCluster :zoomOnClick="true">
+      <GMapMarker
+        :key="index"
+        :icon="'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'"
+        v-for="(m, index) in eventMarkers"
         :position="m.position"
         :clickable="true"
         :draggable="true"
@@ -19,22 +30,36 @@
 </template>
 
 <script>
-import crimeJson from '../../../backend/CrimeDate.json'
+import crimeJson from '../../../Backend/CrimeDate.json'
+import eventJson from '../../../Backend/temp.json'
 
 export default {
   data() {
     return {
       center: { lat: 38.5509409, lng: -121.7358303 },
-      markers: [],
+      crimeMarkers: [],
+      eventMarkers: [],
     };
   },
   mounted(){
-    for (var i = 0; i < crimeJson.length; i++){
-      let position = {
-        lat: crimeJson[i].lat,
-        lng: crimeJson[i].lng
+    for(var i = 0; i < crimeJson.length; i++){
+      var data = {
+        position : {
+          lat: crimeJson[i].lat,
+          lng: crimeJson[i].lng
+        }
       }
-      this.markers.push(position)
+      this.crimeMarkers.push(data)
+    }
+    
+    for(i = 0; i < eventJson.length; i++){
+      data = {
+        position : {
+          lat: eventJson[i].lat,
+          lng: eventJson[i].lng
+        }
+      }
+      this.eventMarkers.push(data)
     }
   }
 };
