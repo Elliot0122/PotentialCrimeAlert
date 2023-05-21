@@ -11,6 +11,7 @@
     "@mdi/font": "5.9.55",
     "@vueuse/core": "^10.1.2",
     "core-js": "^3.8.3",
+    "less-loader": "^11.1.0",
     "roboto-fontface": "*",
     "vue": "^3.2.13",
     "vue-google-maps-community-fork": "^0.3.1",

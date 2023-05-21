@@ -1,52 +1,87 @@
 <template>
-    <p>Showing {{ isEven ? 'even' : 'odd' }} items</p>
-    <button @click="toggle">Toggle Even/Odd</button>
+  <div class="container">
+    <p class="showing-events">Showing recent events</p>
     <div v-bind="containerProps" class="scroll-container">
-      <div v-bind="wrapperProps">
-        <div v-for="item in list" :key="item.index" class="scroll-item">
-          Row: {{ item.data }}
+      <div v-bind="wrapperProps" class="list-dynamic">
+        <div v-for="item in list" :key="item.index" class="list-item-dynamic">
+          {{ item.data }}
         </div>
       </div>
     </div>
-  </template>
-  
-  <style>
-  .scroll-container {
-    height: 26vh;
-    overflow: auto;
-    overflow-y: hidden;
-  }
-  
-  .scroll-item {
-    height: 20px;
+  </div>
+</template>
+
+<style lang="less">
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.toggle-button {
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.scroll-container {
+  height: 25vh;
+  overflow: auto;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 44vw; /* Increase the width value as desired */
+  margin-top: 5px;
+}
+.showing-events {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #606c76;
+  font-family: "Roboto","Helvetica Neue","Helvetica","Arial";
+}
+
+.list-dynamic {
+  width: 100%;
+  height: 500px;
+  border: 2px solid;
+  border-radius: 3px;
+  overflow-y: auto;
+  border-color: #d3d3d3;
+
+  .list-item-dynamic {
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding: 1em;
+    border-bottom: 1px solid;
+    border-color: lightgray;
+    font-weight: bold; /* Example: Change the font weight */
+    color: #606c76; /* Example: Change the color */
+    font-family: "Roboto","Helvetica Neue","Helvetica","Arial";
   }
-  </style>
-  
-  <script>
-  import { useVirtualList } from '@vueuse/core'
-  import { computed, ref } from 'vue'
-  
-  export default {
-    setup() {
-      const isEven = ref(false)
-      const toggle = () => {
-        isEven.value = !isEven.value
-      }
-  
-      const allItems = Array.from(Array(99999).keys())
-      const filteredList = computed(() =>
-        allItems.filter(i => (isEven.value ? i % 2 === 0 : i % 2 === 1))
-      )
-  
-      const { list, containerProps, wrapperProps } = useVirtualList(filteredList, {
-        itemHeight: 22,
-      })
-  
-      return { isEven, toggle, list, containerProps, wrapperProps }
-    },
-  }
-  </script>
-  
+}
+</style>
+
+<script>
+import { useVirtualList } from '@vueuse/core'
+import EventJson from '../../../Backend/temp.json'
+export default {
+  setup() {
+    var allItems = []
+    for (var i = 0 ; i < EventJson.length; i++){
+      allItems.push(EventJson[i].title)
+    }
+    const { list, containerProps, wrapperProps } = useVirtualList(allItems, {
+      itemHeight: 22,
+    })
+
+    return {list, containerProps, wrapperProps }
+  },
+}
+</script>
