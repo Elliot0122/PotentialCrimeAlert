@@ -103,7 +103,9 @@ def return_dates():
                         "date": k
                     }
                     all_date.append(temp)
-    return all_date
+    file_path = "data/date.json"
+    with open(file_path, 'w') as f:
+        json.dump(all_date, f)
 
 def return_event_days(date1, date2):
     create_data_to_json()
@@ -125,16 +127,16 @@ def return_event_days(date1, date2):
                             temp["lat"] = data[str(i)][str(j)][str(k)][l]["Geocode"]["lat"]
                             temp["lng"] = data[str(i)][str(j)][str(k)][l]["Geocode"]["lng"]
                         event_info.append(temp)
-    return event_info
+    file_path = "./data/EventDate.json"
+    with open(file_path, 'w') as f:
+        json.dump(event_info, f)
 
 if __name__ == '__main__':
+
     # create_data_to_json()
     # try:
     #     print(return_event("2023/6/2"))
     # except:
     #     print("No event")
 
-    # print(return_dates())
-    with open("temp.json", 'w') as f:
-        temp = return_event_days("2023/6/1", "2023/6/30")
-        json.dump(temp, f)
+    print(return_dates())
