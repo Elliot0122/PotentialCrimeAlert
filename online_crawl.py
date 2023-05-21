@@ -77,7 +77,7 @@ def create_data_to_json():
     with open('./data/event.json', 'w') as fp:
         json.dump(events, fp)
 
-def retrun_event(date):
+def return_event(date):
     create_data_to_json()
     year, month, day = date.split('/')
     with open('./data/event.json', 'r') as fp:
@@ -89,10 +89,27 @@ def retrun_event(date):
             return event_name, data[year][month][day]
         else:
             return {}
+        
+def return_dates():
+    with open('./data/event.json', 'r') as fp:
+        all_date = []
+        data = json.load(fp)
+        for i in data:
+            for j in data[i]:
+                for k in data[i][j]:
+                    temp = {
+                        "year": i,
+                        "month": j,
+                        "date": k
+                    }
+                    all_date.append(temp)
+    return all_date
 
 if __name__ == '__main__':
-    create_data_to_json()
-    try:
-        print(retrun_event("2023/6/2"))
-    except:
-        print("No event")
+    # create_data_to_json()
+    # try:
+    #     print(return_event("2023/6/2"))
+    # except:
+    #     print("No event")
+
+    print(return_dates())
