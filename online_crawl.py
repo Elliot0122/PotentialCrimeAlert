@@ -1,6 +1,7 @@
 import json
 import datetime
 import requests
+from GoogleMap import GetGeoCode
 from bs4 import BeautifulSoup
 def create_data_to_json():
     month = {
@@ -62,6 +63,7 @@ def create_data_to_json():
                 events[year][new_month][new_date][title] = dict()
                 events[year][new_month][new_date][title]["destination"] = destination
                 events[year][new_month][new_date][title]["time"] = time.strip()
+                events[year][new_month][new_date][title]["Geocode"] = GetGeoCode(destination)
                 if price != destination:
                     events[year][new_month][new_date][title]["price"] = price
                 else:

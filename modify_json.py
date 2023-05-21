@@ -1,7 +1,7 @@
 import json
 import os
 
-file_path = "origin_crime.json"
+file_path = "./data/origin_crime.json"
 
 tags = ["DateReported", "Time", "Type", "Location", "lat", "lng"]
 geo_tag = ["lat", "lng"]
@@ -32,6 +32,6 @@ with open(file_path) as f:
         crime[year][month][date][title]["Geocode"]["lat"] = lat
         crime[year][month][date][title]["Geocode"]["lng"] = lng
 
-file_path = "new_crime.json"
+file_path = "./data/new_crime.json"
 with open(file_path, 'w') as f:
     json.dump(crime, f)
