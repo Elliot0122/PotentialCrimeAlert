@@ -105,6 +105,28 @@ def return_dates():
                     all_date.append(temp)
     return all_date
 
+def return_event_days(date1, date2):
+    create_data_to_json()
+    year1, month1, date1 = date1.split('/')
+    year2, month2, date2 = date2.split('/')
+    year1, month1, date1, year2, month2, date2 = int(year1), int(month1), int(date1), int(year2), int(month2), int(date2)
+    event_info = []
+    with open('./data/event.json', 'r') as fp:
+        data = json.load(fp)
+        for i in range(year1, year2+1):
+            for j in range(month1, month2+1):
+                for k in range(date1, 32):
+                    if j == month2+1 and k > date2:
+                        break
+                    if str(i) in data and str(j) in data[str(i)] and str(k) in data[str(i)][str(j)]:
+                        temp = dict()
+                        for l in data[str(i)][str(j)][str(k)].keys():
+                            temp["title"] = l
+                            temp["lat"] = data[str(i)][str(j)][str(k)][l]["Geocode"]["lat"]
+                            temp["lng"] = data[str(i)][str(j)][str(k)][l]["Geocode"]["lng"]
+                        event_info.append(temp)
+    return event_info
+
 if __name__ == '__main__':
     # create_data_to_json()
     # try:
@@ -112,4 +134,5 @@ if __name__ == '__main__':
     # except:
     #     print("No event")
 
-    print(return_dates())
+    # print(return_dates())
+    print(return_event_days("2023/5/28", "2023/6/5"))
