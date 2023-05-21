@@ -135,4 +135,6 @@ if __name__ == '__main__':
     #     print("No event")
 
     # print(return_dates())
-    print(return_event_days("2023/5/28", "2023/6/5"))
+    with open("temp.json", 'w') as f:
+        temp = return_event_days("2023/6/1", "2023/6/30")
+        json.dump(temp, f)
