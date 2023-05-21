@@ -9,7 +9,7 @@
             />
             <div class = "Button">
                 <button @click="warn(selectedDate, $event)">
-                    Submit
+                    Change Date
                 </button>
             </div>
             
@@ -28,19 +28,41 @@ export default{
         return{
             attrs:[
             {
-                dot: true,
+                highlight: {
+                    color: "purple",
+                    fillMode: "light",
+                },
                 dates:[
                 ]
             },
         ],
-        selectedDate: [
-        new Date(),
-        new Date(new Date().getTime() + 9 * 24 * 60 * 60 * 1000)],
+        selectedDate: [],
     }
     },
 
     
     mounted(){
+        const url = new URL(window.location.href);
+        var urlString = url.toString()
+        console.log(this.selectedDate)
+        if(urlString.includes("?")){
+            var yearStart = url.searchParams.get('yearStart')
+            var yearEnd = url.searchParams.get('yearEnd')
+            var monthStart = url.searchParams.get('monthStart')-1
+            var monthEnd = url.searchParams.get('monthEnd')-1
+            var dayStart = url.searchParams.get('dayStart')
+            var dayEnd = url.searchParams.get('dayEnd')
+            console.log(monthStart)
+            var startDate = new Date(yearStart, monthStart, dayStart)
+            var endDate = new Date(yearEnd, monthEnd, dayEnd)
+            this.selectedDate[0] = startDate
+            this.selectedDate[1] = endDate
+        }
+        else{
+            this.selectedDate[0] = Date()
+            this.selectedDate[1] = new Date(new Date().getTime() + 9 * 24 * 60 * 60 * 1000)
+        }
+        console.log(this.selectedDate)
         for(var i=0; i<eventJson.length;i++){
             var temp = new Date(eventJson[i].year, (eventJson[i].month)-1, eventJson[i].date)
             this.attrs[0].dates.push(temp)

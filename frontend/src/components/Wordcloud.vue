@@ -30,7 +30,6 @@ export default {
     }
   },
   mounted(){
-    console.log(wordcloudJson)
     for (var i = 0; i < wordcloudJson.length; i++){
       var data = []
       data.push(wordcloudJson[i].category)

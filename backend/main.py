@@ -18,7 +18,8 @@ def api():
     return_dates()
     getCrime(f'{yearEnd}/{str(int(monthEnd)-1)}/{dayEnd}', f'{yearEnd}/{monthEnd}/{dayEnd}')
     count_categories()
-    url = "http://127.0.0.1:8080/"
+    
+    url = f"http://127.0.0.1:8080/?yearStart=" + yearStart + "&monthStart=" + monthStart + "&dayStart=" + dayStart + "&yearEnd=" + yearEnd + "&monthEnd=" + monthEnd + "&dayEnd=" + dayEnd
 
     return redirect(url)
 
