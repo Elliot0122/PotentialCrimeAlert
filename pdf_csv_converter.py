@@ -18,7 +18,8 @@ last_column_names = [
     "DateReported",
     "Time",
     "Location",
-    "Geocode"
+    "lat",
+    "lng"
 ]
 folder = "./crime"
 def convert_pdf_to_csv(input_path, output_path):
@@ -72,13 +73,15 @@ def AddGeoColumn():
     df = pd.read_csv(csv_file_path)
     # add new column Geocode at the end
 
-    df['Geocode'] = df['Location']
+    df['lat'] = df['Location']
+    df['lng'] = df['Location']
     for index, row in df.iterrows():
         # change address to geocode
-        address = row['Geocode']
+        address = row['Location']
         geocode = GetGeoCode(address)
         print(geocode)
-        df.at[index, 'Geocode'] = geocode
+        df.at[index, 'lat'] = geocode['lat']
+        df.at[index, 'lng'] = geocode['lng']
 
     df.to_csv('crime_data_geo.csv', index=False, header=True)
     print(df)
@@ -116,16 +119,16 @@ def GetCrime(input):
 
 
 if __name__ == "__main__":
-   ''' AddGeoColumn()
-    Preprocess()
-    # Read the CSV file into a DataFrame
-    df = pd.read_csv('crime_data_preprocess.csv')
+    # AddGeoColumn()
+    # Preprocess()
+    # # Read the CSV file into a DataFrame
+    # df = pd.read_csv('crime_data_preprocess.csv')
     
-    # Convert DataFrame to JSON
-    json_data = df.to_json(orient='records')
+    # # Convert DataFrame to JSON
+    # json_data = df.to_json(orient='records')
     
-    # Save JSON data to a file
-    with open('output.json', 'w') as file:
-        file.write(json_data)'''
-   GetCrime('4/25/2023')
+    # # Save JSON data to a file
+    # with open('output.json', 'w') as file:
+    #     file.write(json_data)
+    GetCrime('4/25/2023')
     
