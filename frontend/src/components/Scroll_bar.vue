@@ -32,9 +32,9 @@
 
 .scroll-container {
   height: 25vh;
-  overflow: auto;
-  overflow-y: auto;
-  border: 1px solid #ccc;
+  // overflow: auto;
+  // overflow-y: auto;
+  // border: 1px solid #ccc;
   border-radius: 4px;
   width: 44vw; /* Increase the width value as desired */
   margin-top: 5px;
@@ -47,16 +47,8 @@
   font-family: "Roboto","Helvetica Neue","Helvetica","Arial";
 }
 
-.list-dynamic {
-  width: 100%;
-  height: 500px;
-  border: 2px solid;
-  border-radius: 3px;
-  overflow-y: auto;
-  border-color: #d3d3d3;
-
-  .list-item-dynamic {
-    display: flex;
+.list-item-dynamic {
+    // display: flex;
     align-items: center;
     padding: 1em;
     border-bottom: 1px solid;
@@ -65,12 +57,20 @@
     color: #606c76; /* Example: Change the color */
     font-family: "Roboto","Helvetica Neue","Helvetica","Arial";
   }
+
+.list-dynamic {
+  width: 100%;
+  height: 500px;
+  // border: 2px solid;
+  border-radius: 3px;
+  // overflow-y: auto;
+  border-color: #d3d3d3;
 }
 </style>
 
 <script>
 import { useVirtualList } from '@vueuse/core'
-import EventJson from '../../../backend/temp.json'
+import EventJson from '../../../backend/data/EventDate.json'
 export default {
   setup() {
     var allItems = []

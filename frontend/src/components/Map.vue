@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import crimeJson from '../../../backend/CrimeDate.json'
-import eventJson from '../../../backend/temp.json'
+import crimeJson from '../../../backend/data/CrimeDate.json'
+import eventJson from '../../../backend/data/EventDate.json'
 
 export default {
   data() {

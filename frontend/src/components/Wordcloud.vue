@@ -17,7 +17,7 @@
 
 <script>
 import VueWordCloud from 'vuewordcloud';
-import wordcloudJson from '../../../backend/wordcloud.json'
+import wordcloudJson from '../../../backend/data/wordcloud.json'
 
 export default {
   components: {
@@ -30,6 +30,7 @@ export default {
     }
   },
   mounted(){
+    console.log(wordcloudJson)
     for (var i = 0; i < wordcloudJson.length; i++){
       var data = []
       data.push(wordcloudJson[i].category)
