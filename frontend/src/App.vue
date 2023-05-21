@@ -1,21 +1,15 @@
 <script>
 import Map from './components/Map.vue'
-<<<<<<< HEAD
 import Wordcloud from './components/Wordcloud.vue'
-=======
 import Scroll_bar from './components/Scroll_bar.vue'
->>>>>>> origin/scroll
 
 export default {
   name: 'App',
 
   components: {
     Map,
-<<<<<<< HEAD
-    Wordcloud
-=======
+    Wordcloud,
     Scroll_bar
->>>>>>> origin/scroll
   },
 
   data: () => ({
