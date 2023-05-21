@@ -17,11 +17,13 @@ new_column_names = [
 last_column_names = [
     "DateReported",
     "Time",
+    "Type",
     "Location",
     "lat",
     "lng"
 ]
 folder = "./crime"
+
 def convert_pdf_to_csv(input_path, output_path):
     try:
         print(input_path)
@@ -102,6 +104,15 @@ def Preprocess():
     df = df.reindex(columns=last_column_names)
     df.to_csv('crime_data_preprocess.csv', index=False, header=True)
     print(df)
+    # Read the CSV file into a DataFrame
+    df = pd.read_csv('crime_data_preprocess.csv')
+    
+    # Convert DataFrame to JSON
+    json_data = df.to_json(orient='records')
+    
+    # Save JSON data to a file
+    with open('output.json', 'w') as file:
+        file.write(json_data)
 
 def GetCrime(input):
     df = pd.read_csv('crime_data_preprocess.csv')
@@ -121,14 +132,5 @@ def GetCrime(input):
 if __name__ == "__main__":
     # AddGeoColumn()
     # Preprocess()
-    # # Read the CSV file into a DataFrame
-    # df = pd.read_csv('crime_data_preprocess.csv')
-    
-    # # Convert DataFrame to JSON
-    # json_data = df.to_json(orient='records')
-    
-    # # Save JSON data to a file
-    # with open('output.json', 'w') as file:
-    #     file.write(json_data)
     GetCrime('4/25/2023')
     
